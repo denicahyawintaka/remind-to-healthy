@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Android Login and Registration</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_alamat">Alamat</string>
+    <string name="hint_kontak">No HP</string>
+    <string name="hint_password">Kata Sandi</string>
+    <string name="hint_re_password">Ulangi Kata Sandi</string>
+    <string name="hint_first_name">Nama Depan</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_last_name">Nama Belakang</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Belum memiliki akun? Daftar sekarang.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome_dokter">Welcome Dok</string>
+    <string name="welcome_pasien">Welcome Pasien</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="name">Fullname</string>
+
+    <string-array name="obat">
+        <item>Paracetamol</item>
+        <item>Amoxicillin</item>
+        <item>Aciphex</item>
+        <item>Promag</item>
+    </string-array>
+
+    <string-array name="kategoriPenyakit">
+        <item>PENYAKIT INFEKSI</item>
+        <item>PENYAKIT RONGGA DADA</item>
+        <item>PENYAKIT MATA</item>
+        <item>PENYAKIT THT</item>
+    </string-array>
+
+    <string-array name="infeksi">
+        <item>DEMAM DENGUE</item>
+        <item>DEMAM BERDARAH DENGUE</item>
+        <item>CACAR AIR</item>
+        <item>HIV/AIDS</item>
+        <item>MORBILI</item>
+        <item>MALARIA</item>
+        <item>LEPTOSPIROSIS</item>
+    </string-array>
+
+    <string-array name="ronggaDada">
+        <item>TB PARU</item>
+        <item>ANGINA PEKTORIS</item>
+        <item>INFARK MIOKARD</item>
+        <item>TAKIKARDIA</item>
+        <item>GAGAL JANTUNG AKUT DAN KRONIK</item>
+        <item>CARDIORESPIRATORY ARRREST</item>
+        <item>BROINKITIS AKUT</item>
+        <item>INFLUENZA</item>
+        <item>PNEUMONIA DAN BRONKOPNEUMONIA</item>
+        <item>PERTUSIS</item>
+        <item>ASMA BRONKIAL</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_pasien"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="com.pt2.menuDokter">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:background="@drawable/lingkaran_pasien"
+        android:id="@+id/imageView"
+        android:layout_centerInParent="true" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/konsumsi_obat"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="-10dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/konsumsi_obat"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KONSUMSI OBAT"
+        android:layout_below="@+id/konsumsi_obat"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView2" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/cek_konsultasi"
+        android:layout_marginTop="44dp"
+        android:id="@+id/cek_konsultasi"
+        android:layout_marginEnd="66dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignEnd="@+id/konsumsi_obat" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/riwayat_kesehatan"
+        android:id="@+id/riwayatKesehatan"
+        android:layout_marginStart="44dp"
+        android:layout_alignTop="@+id/cek_konsultasi"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CEK KONSULTASI"
+        android:id="@+id/textView3"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignEnd="@+id/cek_konsultasi" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RIWAYAT KESEHATAN"
+        android:id="@+id/textView4"
+        android:textSize="12dp"
+        android:layout_below="@+id/riwayatKesehatan"
+        android:layout_alignEnd="@+id/riwayatKesehatan" />
+
+
+</RelativeLayout>

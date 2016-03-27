@@ -1,0 +1,247 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:taools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_input_konsultasi"
+    tools:context="${relativePackage}.${activityClass}" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Kepada : "
+                android:textColor="@color/lbl_name"
+                android:paddingBottom="10dp"
+                />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:hint="@string/hint_username"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Kategori Penyakit : "
+                android:textColor="@color/lbl_name"
+                android:paddingBottom="10dp"
+                />
+
+
+            <Spinner
+                android:id="@+id/kategoriPenyakit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:entries="@array/kategoriPenyakit"
+                android:hint="Nama Penyakit"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Nama Penyakit : "
+                android:textColor="@color/lbl_name"
+                android:paddingBottom="10dp"
+                />
+
+
+            <Spinner
+                android:id="@+id/namaPenyakit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Saran Dokter : "
+                android:textColor="@color/lbl_name"
+                android:paddingBottom="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/linearSaran"
+                android:background="@color/btn_logut_bg">
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/btn_logut_bg"
+                android:text="Add"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="INPUT OBAT : "
+                android:textColor="@color/lbl_name"
+                android:paddingBottom="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/btn_logut_bg"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <EditText
+                    android:id="@+id/namaObat"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/white"
+                    android:hint="Nama Obat"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/input_login"
+                    android:textColorHint="@color/input_login_hint" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="FREKUENSI : "
+                    android:textColor="@color/lbl_name"
+                    android:paddingBottom="10dp"
+                    android:layout_below="@+id/spinerObat"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/frekuensi" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+                    <EditText
+                        android:id="@+id/jumlahHari"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:ems="2"
+                        android:padding="6dp"
+                        android:layout_marginRight="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/input_login"
+                        android:textColorHint="@color/input_login_hint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:text="X"
+                        android:textColor="@color/lbl_name"
+                        android:paddingBottom="10dp"
+                        android:layout_marginRight="10dp"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:ems="2"
+                        android:padding="6dp"
+                        android:singleLine="true"
+                        android:textColor="@color/input_login"
+                        android:textColorHint="@color/input_login_hint" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="INTERVAL : "
+                    android:textColor="@color/lbl_name"
+                    android:paddingBottom="10dp"
+                 />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:id="@+id/interval"
+                        android:ems="2"
+                        android:padding="6dp"
+                        android:layout_marginRight="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/input_login"
+                        android:textColorHint="@color/input_login_hint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="JAM"
+                        android:textColor="@color/lbl_name"
+                        android:paddingBottom="10dp"
+                        android:layout_marginRight="10dp"/>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dip"
+                android:background="@color/btn_logut_bg"
+                android:text="KIRIM"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>
