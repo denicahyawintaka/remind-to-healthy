@@ -7,49 +7,60 @@
     tools:context="com.example.androidringtone.SecondActivity"
     android:background="@drawable/alarm">
 
-
-    <TextView
-        android:id="@+id/secinfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="23dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/stop"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Stop"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="79dp"
-        android:background="@color/btn_logut_bg"/>
-
+        android:layout_marginBottom="59dp">
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1 KAPSUL"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/textView"
+        android:text="WAKTUNYA MINUM OBAT"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="150dp" />
+    <Button
+        android:id="@+id/lihatObat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CEK OBAT"
+        android:background="@color/white"
+        android:layout_marginBottom="20dp" />
+    <LinearLayout
+android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SESUDAH MAKAN"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/sudah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sudah"
+            android:background="@color/btn_logut_bg"
+            android:layout_alignTop="@+id/belum"
+            android:layout_toStartOf="@+id/secinfo"
+            android:layout_marginEnd="8dp" />
+        <Button
+            android:id="@+id/belum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum"
+            android:background="@color/btn_logut_bg"
+            android:layout_above="@+id/secinfo"
+            android:layout_alignEnd="@+id/textView6"
+            android:layout_marginEnd="11dp" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SAATNYA MINUM OBAT PARACETAMOL"
-        android:layout_above="@+id/textView6"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp" />
+    </LinearLayout>
+    </LinearLayout>
+
+
+
+
 
 </RelativeLayout>

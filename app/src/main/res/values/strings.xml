@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Login and Registration</string>
+    <string name="app_name">REALLITY</string>
     <string name="hint_email">Email</string>
     <string name="hint_alamat">Alamat</string>
     <string name="hint_kontak">No HP</string>

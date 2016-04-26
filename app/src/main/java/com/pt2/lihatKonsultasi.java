@@ -1,19 +1,11 @@
 package com.pt2;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,31 +16,23 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class lihatKonsultasi extends AppCompatActivity {
     private static final String TAG = lihatKonsultasi.class.getSimpleName();
     private TextView username;
-    private TextView namaPenyakitTxt;
-    private TextView saranDokterTxt;
-    private TextView obat;
+    private TextView namaPenyakitTxt,tanggalKonsul,idKonsultasi;
     private ProgressDialog pDialog;
     private SQLiteHandler db;
-    Ringtone ringTone;
+    private   LinearLayout linearLayout;
 
-    Uri uriAlarm;
 
-    final static int RQS_RINGTONEPICKER = 1;
 
-    final static int RQS_1 = 1;
 
 
     @Override
@@ -57,16 +41,17 @@ public class lihatKonsultasi extends AppCompatActivity {
         setContentView(R.layout.activity_lihat_konsultasi);
         username = (TextView) findViewById(R.id.username);
         namaPenyakitTxt = (TextView) findViewById(R.id.namaPenyakit);
-        saranDokterTxt = (TextView) findViewById(R.id.saranDokter);
-        uriAlarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        tanggalKonsul = (TextView) findViewById(R.id.tanggalKonsultasi);
+        idKonsultasi = (TextView) findViewById(R.id.idKonsultasi);
+        linearLayout = (LinearLayout) findViewById(R.id.dataKonsultasi);
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
         // SQLite database handler
         db = new SQLiteHandler(getApplicationContext());
-        HashMap<String, String> user = db.getUserDetails();
-        String pasien = user.get("id");
+        HashMap<String, String> konsultasi = db.getKonsultasi();
+        String pasien = konsultasi.get("id_konsultasi");
         checkKonsultasi(pasien);
     }
 
@@ -74,7 +59,7 @@ public class lihatKonsultasi extends AppCompatActivity {
     private void checkKonsultasi(final String pasien) {
         // Tag used to cancel the request
         String tag_string_req = "req_lihatKonsultasi";
-
+        System.out.println(pasien);
         pDialog.setMessage("TUNGGU BEBERAPA SAAT...");
         showDialog();
 
@@ -96,19 +81,32 @@ public class lihatKonsultasi extends AppCompatActivity {
 
                         // Now store the user in SQLite
                         JSONObject konsultasi = jObj.getJSONObject("konsultasi");
-                        String idDokter = konsultasi.getString("idDokter");
+                        String idDokter = konsultasi.getString("namaDokter");
                         String namaPenyakit = konsultasi.getString("namaPenyakit");
-                        String saranDokter = konsultasi.getString("saranDokter");
+                        JSONArray saranList = konsultasi.getJSONArray("saranDokter");
+                        String tanggal = konsultasi.getString("tanggal");
+                        String idKon= konsultasi.getString("idKonsultasi");
 
+                        /*
+                        JSONObject obat = jObj.getJSONObject("obat");
+                        String idObat = obat.getString("idObat");
+                        String idKonsultasi = obat.getString("idKonsultasi");
+                        String namaObat = obat.getString("namaObat");
+                        String frekuensi = obat.getString("frekuensi");
+                        String interval = obat.getString("interval");
+                        db.addObat(idObat,idKonsultasi,namaObat,frekuensi,interval);
+                        */
 
-                        username.setText(idDokter);
+                        username.setText("DR. "+idDokter);
                         namaPenyakitTxt.setText(namaPenyakit);
-                        saranDokterTxt.setText(saranDokter);
-                        setAlarm(uriAlarm);
+                        tanggalKonsul.setText(tanggal);
+                        idKonsultasi.setText("Nomor Konsultasi : "+idKon);
 
-                        // Inserting row in users table
-                        //db.addUser(name, email, id, created_at);
-                        // Launch main activity
+                        for(int i=0;i<saranList.length();i++){
+                            createEditSaran(saranList.getString(i));
+                        }
+
+
 
                             /*Intent intent = new Intent(lihatKonsultasi.this,
                                     LoginActivity.class);
@@ -153,33 +151,21 @@ public class lihatKonsultasi extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(strReq);
     }
+    private void createEditSaran(String saranDokter){
+        TextView txtView = new TextView(lihatKonsultasi.this);
+        txtView.setPadding(20, 20, 20, 20);
+        txtView.setTextColor(Color.rgb(34, 34, 34));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(0, 0, 0, 20);
+        txtView.setLayoutParams(layoutParams);
+        txtView.setBackgroundColor(Color.WHITE);
+        txtView.setText(saranDokter);
+        linearLayout.addView(txtView);
 
-    private void setAlarm(Uri passuri) {
-
-            Calendar cal = Calendar.getInstance();
-
-          cal.set(1,
-                1,
-                1,
-                1,
-                1,
-                1);
-
-            String passString = passuri.toString();
-
-
-            Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
-            intent.putExtra("KEY_TONE_URL", passString);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                    getBaseContext(),
-                    RQS_1,
-                    intent,
-                    PendingIntent.FLAG_CANCEL_CURRENT);
-
-            AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-        }
-
+       // edtList.add(edtView);
+    }
 
 
     private void showDialog() {

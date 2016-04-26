@@ -2,13 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8E3646"
+    android:background="@color/background_input_konsultasi"
     tools:context=".inputKonsultasiActivity" >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:paddingTop="30dp"
             android:layout_marginLeft="20dp"
@@ -18,10 +18,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:text="Kepada : "
-                android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="@color/lbl_name"
                 android:paddingBottom="10dp"
                 android:layout_weight="1" />
 
@@ -42,10 +41,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="15dp"
                 android:text="Kategori Penyakit : "
-                android:textColor="@color/white"
+                android:textColor="@color/lbl_name"
                 android:paddingBottom="10dp"
                 android:layout_weight="1" />
 
@@ -67,10 +65,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="15dp"
                 android:text="Nama Penyakit : "
-                android:textColor="@color/white"
+                android:textColor="@color/lbl_name"
                 android:paddingBottom="10dp"
                 android:layout_weight="1" />
 
@@ -90,10 +87,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="15dp"
                 android:text="Saran Dokter : "
-                android:textColor="@color/white"
+                android:textColor="@color/lbl_name"
                 android:paddingBottom="10dp"
                 android:layout_weight="1" />
 
@@ -106,31 +102,33 @@
                 android:layout_weight="1">
 
             </LinearLayout>
-            <ImageButton
+            <Button
                 android:id="@+id/btnAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/plus"
+                android:background="@color/btn_logut_bg"
+                android:text="Add"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="15dp"
-                />
+                android:layout_weight="1" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="15dp"
                 android:text="INPUT OBAT : "
-                android:textColor="@color/white"
+                android:textColor="@color/lbl_name"
                 android:paddingBottom="10dp"
                 android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#78545A"
+                android:background="@color/btn_logut_bg"
                 android:orientation="vertical"
                 android:padding="20dp"
                 android:layout_weight="1">
@@ -146,74 +144,13 @@
                     android:textColor="@color/input_login"
                     android:textColorHint="@color/input_login_hint"
                     android:layout_weight="1" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:textSize="15dp"
-                    android:text="DOSIS : "
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:paddingBottom="10dp"
-                    android:layout_below="@+id/spinerObat"
-                    android:layout_alignParentStart="true"
-                    android:layout_weight="1" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:id="@+id/Dosis"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:ems="2"
-                        android:padding="6dp"
-                        android:singleLine="true"
-                        android:textColor="@color/input_login"
-                        android:textColorHint="@color/input_login_hint" />
-                    <RadioGroup
-                        android:id="@+id/radioGrup"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <RadioButton
-
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:id="@+id/radioTablet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tablet"
-                            android:textColor="@color/white"/>
-
-                        <RadioButton
-                            android:id="@+id/radioSendok"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Takar"
-                            android:textColor="@color/white" />
-
-                        <RadioButton
-                            android:id="@+id/radioTetes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tetes"
-                            android:textColor="@color/white" />
-                    </RadioGroup>
-                    </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:textSize="15dp"
                     android:text="FREKUENSI : "
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/lbl_name"
                     android:paddingBottom="10dp"
                     android:layout_below="@+id/spinerObat"
                     android:layout_alignParentStart="true"
@@ -241,11 +178,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:text="x / Hari"
-                        android:textColor="@color/white"
+                        android:textSize="25dp"
+                        android:text="X"
+                        android:textColor="@color/lbl_name"
                         android:paddingBottom="10dp"
                         android:layout_marginRight="10dp"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:ems="2"
+                        android:padding="6dp"
+                        android:singleLine="true"
+                        android:textColor="@color/input_login"
+                        android:textColorHint="@color/input_login_hint" />
 
                 </LinearLayout>
 
@@ -254,7 +201,7 @@
                     android:layout_height="0dp"
                     android:textSize="15dp"
                     android:text="INTERVAL : "
-                    android:textColor="@color/white"
+                    android:textColor="@color/lbl_name"
                     android:paddingBottom="10dp"
                     android:layout_weight="1" />
                 <LinearLayout
@@ -279,8 +226,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20dp"
-                        android:text="Jam"
-                        android:textColor="@color/white"
+                        android:text="JAM"
+                        android:textColor="@color/lbl_name"
                         android:paddingBottom="10dp"
                         android:layout_marginRight="10dp"/>
 
@@ -297,10 +244,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="40dip"
-                android:background="@color/btn_login_bg"
+                android:background="@color/btn_logut_bg"
                 android:text="KIRIM"
                 android:textAllCaps="false"
-                android:textColor="#8E3646"
+                android:textColor="@color/white"
                 android:textSize="15dp"
                 android:layout_weight="1" />
         </LinearLayout>

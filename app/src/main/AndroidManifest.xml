@@ -68,6 +68,14 @@
         </activity>
         <activity android:name=".ProfilDokter" >
         </activity>
+        <activity android:name=".inbox" >
+        </activity>
+        <activity android:name=".fragment_alarm" >
+        </activity>
+        <activity android:name=".adapterModelKonsultasi" >
+        </activity>
+        <activity android:name=".LihatPasien" >
+        </activity>
     </application>
 
 </manifest>

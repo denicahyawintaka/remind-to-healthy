@@ -1,44 +1,36 @@
 package com.pt2;
 
-import android.app.ActionBar;
 import android.app.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsoluteLayout;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,14 +39,19 @@ import java.util.Map;
 public class inputKonsultasiActivity extends Activity {
     private static final String TAG = inputKonsultasiActivity.class.getSimpleName();
     private Spinner spinner, spinnerKategoriPenyakit,namaPenyakit;
-    private EditText username;
+    private EditText username,dosisObat;
     private boolean refresh=false;
     private ProgressDialog pDialog;
     private SQLiteHandler db;
-    private Button submit,add;
+    private Button submit;
+    private ImageButton add;
     LinearLayout linearLayout;
-    private EditText namaObat, jumlah, interval;
+    private EditText namaObat, jumlahHari, intervalEdt;
     ArrayList<EditText> edtList = new ArrayList<EditText>();
+    Thread timerThread;
+    boolean aa = false;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,25 +60,37 @@ public class inputKonsultasiActivity extends Activity {
         spinnerKategoriPenyakit = (Spinner) findViewById(R.id.kategoriPenyakit);
         username = (EditText) findViewById(R.id.username);
         namaObat = (EditText) findViewById(R.id.namaObat);
-        jumlah = (EditText) findViewById(R.id.jumlahHari);
-        interval = (EditText) findViewById(R.id.interval);
+        jumlahHari = (EditText) findViewById(R.id.jumlahHari);
+        intervalEdt = (EditText) findViewById(R.id.interval);
+        dosisObat = (EditText) findViewById(R.id.Dosis);
         namaPenyakit = (Spinner) findViewById(R.id.namaPenyakit);
-
+        radioGroup = (RadioGroup) findViewById(R.id.radioGrup);
         submit = (Button) findViewById(R.id.btnSubmit);
-        add = (Button) findViewById(R.id.btnAdd);
+        add = (ImageButton) findViewById(R.id.btnAdd);
 
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
         linearLayout = (LinearLayout) findViewById(R.id.linearSaran);
         pDialog.setCancelable(false);
+        spinnerKategoriPenyakit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                KategoriPenyakit();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         // SQLite database handler
         db = new SQLiteHandler(getApplicationContext());
 
         createEditSaran();
 
-        KategoriPenyakit();
+
+
         add.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 createEditSaran();
@@ -90,18 +99,24 @@ public class inputKonsultasiActivity extends Activity {
         });
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                refresh=true;
                 String pasien = username.getText().toString();
                 HashMap<String, String> user = db.getUserDetails();
                 String dokter = user.get("id");
+                String obat = namaObat.getText().toString();
                 String nama_penyakit = namaPenyakit.getSelectedItem().toString();
+                String jumlah = jumlahHari.getText().toString();
+                String interval = intervalEdt.getText().toString();
+                String dosis = dosisObat.getText().toString();
+                int selectId = radioGroup.getCheckedRadioButtonId();
+                radioButton = (RadioButton) findViewById(selectId);
+                String penggunaan = radioButton.getText().toString();
                 ArrayList<String> etText = new ArrayList<String>();
                 for(EditText et : edtList){
                     String settext = et.getText().toString();
                     etText.add(settext);
                 }
                 if (!pasien.isEmpty() && !nama_penyakit.isEmpty() ) {
-                    registerUser(pasien, dokter, nama_penyakit, etText);
+                    registerUser(pasien, dokter, nama_penyakit, etText, jumlah, interval, obat,dosis,penggunaan);
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
@@ -113,7 +128,7 @@ public class inputKonsultasiActivity extends Activity {
     }
     private void createEditSaran(){
         EditText edtView = new EditText(inputKonsultasiActivity.this);
-        edtView.setHint("MASUKKAN SARAN");
+        edtView.setHint("Masukkan Saran");
         edtView.setPadding(20, 20, 20, 20);
         edtView.setTextColor(Color.rgb(34, 34, 34));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -127,7 +142,7 @@ public class inputKonsultasiActivity extends Activity {
         edtList.add(edtView);
     }
     private void KategoriPenyakit(){
-        String kategori = spinnerKategoriPenyakit.getSelectedItem().toString();
+        String kategori= spinnerKategoriPenyakit.getSelectedItem().toString();
         if(kategori.equalsIgnoreCase("penyakit infeksi")) {
             ArrayAdapter adapter = ArrayAdapter.createFromResource(
                     this, R.array.infeksi, android.R.layout.simple_spinner_item);
@@ -141,7 +156,8 @@ public class inputKonsultasiActivity extends Activity {
     }
 
     private void registerUser(final String pasien, final String dokter,
-                              final String nama_penyakit, final ArrayList<String> saranList ) {
+                              final String nama_penyakit, final ArrayList<String> saranList, final String jumlah,
+                              final String interval,  final String obat, final String dosis, final String penggunaan) {
         String tag_string_req = "req_konsultasi";
 
         pDialog.setMessage("MENGINPUTKAN ...");
@@ -218,7 +234,11 @@ public class inputKonsultasiActivity extends Activity {
                 for(String et : saranList){
                     params.put("saran["+(i++)+"]", et);
                 }
-
+                params.put("jumlah", jumlah);
+                params.put("interval", interval);
+                params.put("namaObat", obat);
+                params.put("dosis", dosis);
+                params.put("penggunaan", penggunaan);
 
                 return params;
             }

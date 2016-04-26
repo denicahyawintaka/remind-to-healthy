@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg_register"
+    android:background="#e36d6d"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp" >
@@ -29,27 +29,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/input_register_bg"
+                android:background="@color/white"
                 android:hint="@string/hint_first_name"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:inputType="textCapWords"
-                android:textColor="@color/input_register"
-                android:textColorHint="@color/input_register_hint" />
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
 
             <EditText
                 android:id="@+id/last_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="@color/input_register_bg"
+                android:background="@color/white"
                 android:hint="@string/hint_last_name"
                 android:ems="9"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:inputType="textCapWords"
-                android:textColor="@color/input_register"
-                android:textColorHint="@color/input_register_hint" />
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
 
 
         </LinearLayout>
@@ -59,77 +59,77 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
+            android:background="@color/white"
             android:hint="@string/hint_username"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
 
         <EditText
             android:id="@+id/email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
+            android:background="@color/white"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
+            android:background="@color/white"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
 
         <EditText
             android:id="@+id/re_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
+            android:background="@color/white"
             android:hint="@string/hint_re_password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
 
         <EditText
             android:id="@+id/kontak"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
+            android:background="@color/white"
             android:hint="@string/hint_kontak"
             android:inputType="phone"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
 
         <EditText
             android:id="@+id/alamat"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/input_register_bg"
+            android:background="@color/white"
             android:hint="@string/hint_alamat"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint" />
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
 
         <RadioGroup
             android:id="@+id/radioGrup"
@@ -137,6 +137,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
+
                 android:layout_marginLeft="48dp"
                 android:layout_marginRight="30dp"
                 android:id="@+id/radioDokter"
@@ -159,9 +160,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:background="@color/btn_logut_bg"
+            android:background="@color/btn_login_bg"
             android:text="@string/btn_register"
-            android:textColor="@color/white" />
+            android:textColor="@color/colorAccent" />
 
         <!-- Link to Login Screen -->
 

@@ -21,13 +21,12 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class LoginActivity extends Activity {
-    private static final String TAG = RegisterActivity.class.getSimpleName();
+    private static final String TAG = LoginActivity.class.getSimpleName();
     private Button btnLogin;
     private Button btnLinkToRegister;
     private EditText inputUsername;
@@ -57,11 +56,27 @@ public class LoginActivity extends Activity {
         session = new SessionManager(getApplicationContext());
 
         // Check if user is already logged in or not
+        HashMap<String, String> user = db.getUserDetails();
+
+        String status = user.get("status");
+
+        // Check if user is already logged in or not
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-            Intent intent = new Intent(LoginActivity.this, DokterActivity.class);
-            startActivity(intent);
-            finish();
+
+            if (status.equals("Dokter")) {
+
+                Intent intent = new Intent(LoginActivity.this,
+                        menuDokter.class);
+                startActivity(intent);
+                finish();
+            } else {
+
+                Intent intent = new Intent(LoginActivity.this,
+                        menu_pasien.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
         // Login button Click Event
@@ -149,6 +164,7 @@ public class LoginActivity extends Activity {
                       Intent intent = new Intent(LoginActivity.this,
                                 menuDokter.class);
                         startActivity(intent);
+                          finish();
                         }
                         else{
 
